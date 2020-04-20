@@ -2,6 +2,7 @@ package televisao;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public abstract class Televisao {
 
@@ -11,6 +12,8 @@ public abstract class Televisao {
 
     public final static int VOLUME_MAXIMO = 10;
     public final static int VOLUME_MINIMO = 0;
+    public final static int INCREMENTO = 1;
+    public final static int DECREMENTO = -1;
 
 
     String id;
@@ -96,7 +99,7 @@ public abstract class Televisao {
      * Método de cadastrar canais
      */
 
-    public abstract void cadastrarCanais();
+    public abstract void cadastrarCanais(List<Canal> canais);
 
     /**
      * Mostra quais os canais que tem
@@ -130,9 +133,9 @@ public abstract class Televisao {
         int vol;
         vol = 0;
 
-        if(altVolume.equalsIgnoreCase("decrementar")){
+        if(altVolume.equalsIgnoreCase("diminuir")){
 
-            vol = this.volume - 1;
+            vol = this.volume + DECREMENTO;
 
             if (vol < VOLUME_MINIMO){
 
@@ -142,9 +145,9 @@ public abstract class Televisao {
 
             }
 
-        } else if (altVolume.equalsIgnoreCase("incrementar")){
+        } else if (altVolume.equalsIgnoreCase("aumentar")){
 
-            vol = this.volume + 1;
+            vol = this.volume + INCREMENTO;
 
             if (vol > VOLUME_MAXIMO){
 
@@ -179,14 +182,14 @@ public abstract class Televisao {
         int i;
         i = canaisCadastrados.indexOf(canalAtual);
 
-        if (altCanal.equalsIgnoreCase("seguinte")){
+        if (altCanal.equalsIgnoreCase("proximo")){
 
-            i = i++;
+            i = ++i;
             i %= canaisCadastrados.size();
 
-        } else if (altCanal.equalsIgnoreCase("voltar")){
+        } else if (altCanal.equalsIgnoreCase("anterior")){
 
-            i = i--;
+            i = --i;
 
             if (i >= 0){
 
@@ -213,13 +216,7 @@ public abstract class Televisao {
 
     public boolean verificarCanal(Canal canal){
 
-        if (this.canaisCadastrados.contains(canal)){
-
-            return false;
-
-        }
-
-        return true;
+        return this.canaisCadastrados.contains(canal);
 
     }
 

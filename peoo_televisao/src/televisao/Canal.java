@@ -1,5 +1,6 @@
 package televisao;
 
+
 public class Canal {
 
     public int canal;
@@ -63,7 +64,17 @@ public class Canal {
     }
 
 
+    /**
+     * Construtor informacoes().
+     * @return
+     */
 
+    @Override
+    public String toString(){
+
+        return "Canal " + canal + "," + nome + "," + hd;
+
+    }
 
 
 
