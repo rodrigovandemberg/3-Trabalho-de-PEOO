@@ -105,7 +105,7 @@ public abstract class Televisao {
      * Mostra quais os canais que tem
      */
 
-    public void mostrarGradeDeCanais(){
+    public void mostarGrade(){
 
         this.canaisCadastrados.stream().sorted(Comparator.comparing(Canal::getCanal)).forEach(System.out::println);
 
@@ -115,7 +115,7 @@ public abstract class Televisao {
      * Mostra as informações do canal atual
      */
 
-    public void informacoes(){
+    public void informarDados(){
 
         System.out.println(canalAtual);
 

@@ -7,6 +7,16 @@ public class Canal {
     public String nome;
     public boolean hd;
 
+
+    public Canal(int canal, String nome, boolean hd){
+
+        this.canal = canal;
+        this.nome = nome;
+        this.hd = hd;
+
+    }
+
+
     /**
      * Atributos da classe canal
      * @return
