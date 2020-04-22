@@ -5,7 +5,13 @@ import java.util.ArrayList;
 public class ControleRemoto {
 
 
-    public ArrayList<Televisao> listaTVS = new ArrayList<>();
+    public ArrayList<Televisao> listaTVS;
+
+    public ControleRemoto(){
+
+        this.listaTVS = new ArrayList<>();
+
+    }
 
     public ArrayList<Televisao> getListaTVS(){
 
@@ -19,21 +25,17 @@ public class ControleRemoto {
 
     }
 
-    public ControleRemoto(){
-
-        this.listaTVS = new ArrayList<>();
-
-    }
 
     public void cadastrarTV(Televisao televisao) throws TVCadastradaException{
 
         if (this.listaTVS.contains(televisao)){
 
-            this.listaTVS.add(televisao);
+            throw new TVCadastradaException("Essa TV já foi cadastrada ", televisao);
+
 
         } else {
 
-            throw new TVCadastradaException("Essa TV já foi cadastrada", televisao);
+            this.listaTVS.add(televisao);
 
         }
 
@@ -41,25 +43,17 @@ public class ControleRemoto {
 
     public void proximoCanal(){
 
-        for (Televisao televisao : listaTVS){
-
-            televisao.altCanal("proximo");
-
-        }
+        this.listaTVS.forEach(televisao -> televisao.altCanal("proximo"));
 
     }
 
     public void canalAnterior(){
 
-        for (Televisao televisao : listaTVS){
-
-            televisao.altCanal("anterior");
-
-        }
+        this.listaTVS.forEach(televisao -> televisao.altCanal("anterior"));
 
     }
 
-    public void sintonizar(int canal) throws CanalInexistenteException {
+   /** public void sintonizar(int canal) throws CanalInexistenteException {
 
         for (Televisao televisao : listaTVS){
 
@@ -67,9 +61,21 @@ public class ControleRemoto {
 
         }
 
-    }
+    }*/
 
-    public void sintonizar2(Canal canal){
+   public void sintonizar(int canal){
+
+       this.listaTVS.forEach(televisao -> {
+           try {
+               televisao.sintonia(canal);
+           } catch (CanalInexistenteException e) {
+               e.printStackTrace();
+           }
+       });
+
+   }
+
+    /**public void sintonizar(Canal canal){
 
         this.listaTVS.forEach(televisao -> {
 
@@ -85,7 +91,7 @@ public class ControleRemoto {
 
         });
 
-    }
+    }*/
 
     public void mostrarGrade(){
 

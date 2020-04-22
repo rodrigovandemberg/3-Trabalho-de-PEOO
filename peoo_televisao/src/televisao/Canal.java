@@ -82,7 +82,7 @@ public class Canal {
     @Override
     public String toString(){
 
-        return "Canal " + canal + "," + nome + "," + hd;
+        return "Canal " + canal + ", " + nome + ", HD = " + hd;
 
     }
 
