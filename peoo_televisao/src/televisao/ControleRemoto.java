@@ -7,11 +7,20 @@ public class ControleRemoto {
 
     public ArrayList<Televisao> listaTVS;
 
+    /**
+     * Método padrão da classe ControleRemoto
+     */
+
     public ControleRemoto(){
 
         this.listaTVS = new ArrayList<>();
 
     }
+
+    /**
+     * Método get/set do listaTVS
+     * @return
+     */
 
     public ArrayList<Televisao> getListaTVS(){
 
@@ -24,6 +33,12 @@ public class ControleRemoto {
         this.listaTVS = listaTVS;
 
     }
+
+    /**
+     * Metodo para cadastrar TV
+     * @param televisao
+     * @throws TVCadastradaException
+     */
 
 
     public void cadastrarTV(Televisao televisao) throws TVCadastradaException{
@@ -41,6 +56,10 @@ public class ControleRemoto {
 
     }
 
+    /**
+     * Opções para alterar o canal da TV
+     */
+
     public void proximoCanal(){
 
         this.listaTVS.forEach(televisao -> televisao.altCanal("proximo"));
@@ -53,45 +72,33 @@ public class ControleRemoto {
 
     }
 
-   /** public void sintonizar(int canal) throws CanalInexistenteException {
-
-        for (Televisao televisao : listaTVS){
-
-            televisao.sintonia(canal);
-
-        }
-
-    }*/
+    /**
+     * Sintoniza o canal
+     * @param canal
+     */
 
    public void sintonizar(int canal){
 
        this.listaTVS.forEach(televisao -> {
+
            try {
+
                televisao.sintonia(canal);
+
            } catch (CanalInexistenteException e) {
-               e.printStackTrace();
+
+               System.err.println(e.getMessage());
+
            }
+
        });
 
    }
 
-    /**public void sintonizar(Canal canal){
+    /**
+     * Mostra todos os canais disponíveis
+     */
 
-        this.listaTVS.forEach(televisao -> {
-
-            try{
-
-                televisao.sintonia(canal.getCanal());
-
-            } catch (CanalInexistenteException e){
-
-                System.err.println(e.getMessage());
-
-            }
-
-        });
-
-    }*/
 
     public void mostrarGrade(){
 
@@ -103,11 +110,20 @@ public class ControleRemoto {
 
     }
 
+    /**
+     * Informar os dados do canal
+     * @param televisao
+     */
+
     public void informarDados(Televisao televisao){
 
         televisao.informarDados();
 
     }
+
+    /**
+     * Opções de controlar o volume do canal
+     */
 
     public void aumentarVol(){
 
@@ -121,25 +137,6 @@ public class ControleRemoto {
 
     }
 
-    /**public void aumentarVol(){
-
-        for (Televisao televisao : listaTVS){
-
-            televisao.altVolume("aumentar");
-
-        }
-
-    }
-
-    public void diminuirVol(){
-
-        for (Televisao televisao : listaTVS){
-
-            televisao.altVolume("diminuir");
-
-        }
-
-    }*/
 
 
 

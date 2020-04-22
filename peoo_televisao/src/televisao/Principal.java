@@ -8,27 +8,27 @@ public class Principal {
 
     public static ArrayList<Canal> canais;
 
+    public static void canaisInicio() {
+
+        canais = new ArrayList<>();
+
+        canais.add(new Canal(8, "RECORD", false));
+        canais.add(new Canal(80, "RECORDHD", true));
+        canais.add(new Canal(10, "GLOBO", false));
+        canais.add(new Canal(100, "GLOBOHD", true));
+        canais.add(new Canal(12, "SBT", false));
+        canais.add(new Canal(120, "SBTHD", true));
+        canais.add(new Canal(14, "BAND", false));
+        canais.add(new Canal(140, "BANDHD", true));
+    }
+
     public static void main(String[] args) {
 
         ControleRemoto controleRemoto = new ControleRemoto();
 
+
         Televisao smart = new SmartTV("LG24", canais, 22);
         Televisao tvHD = new TVHD("PHILIPS17", canais, TVHD.model.PLASMA);
-
-        /**smart.cadastrarCanais(canais);
-        tvHD.cadastrarCanais(canais);
-
-
-        try {
-
-            controleRemoto.cadastrarTV(smart);
-            controleRemoto.cadastrarTV(tvHD);
-
-        } catch (TVCadastradaException e) {
-
-            System.err.println(e.getMessage());
-
-        }*/
 
 
         canaisInicio();
@@ -47,7 +47,7 @@ public class Principal {
 
             if (aux.equalsIgnoreCase("SmartTV")) {
 
-                smart.cadastrarCanais(canais);
+                smart.cadastrarCanais();
 
                 try {
 
@@ -63,7 +63,7 @@ public class Principal {
 
             } else if (aux.equalsIgnoreCase("TVHD")) {
 
-                tvHD.cadastrarCanais(canais);
+                tvHD.cadastrarCanais();
 
                 try {
 
@@ -99,6 +99,8 @@ public class Principal {
 
             op = sc.nextInt();
 
+            Scanner sc2 = new Scanner(System.in);
+
             String i;
             String a;
             int c;
@@ -108,7 +110,7 @@ public class Principal {
                 case 1:
                     System.out.println("Deseja 'aumentar' ou 'diminuir' o volume ? (Responda da forma que está escrito)");
 
-                    i = sc.nextLine();
+                    i = sc2.nextLine();
 
                     if (i.equalsIgnoreCase("aumentar")){
 
@@ -128,7 +130,7 @@ public class Principal {
                     System.out.println("Escolha uma das opções abaixo para alterar o canal (Responda da forma que está escrito)");
                     System.out.println("'proximo' ou 'anterior'");
 
-                    a = sc.nextLine();
+                    a = sc2.nextLine();
 
                     if (a.equalsIgnoreCase("proximo")){
 
@@ -146,7 +148,7 @@ public class Principal {
                 case 3:
                     System.out.println("Qual o número do canal que você deseja sintonizar ?");
 
-                    c = sc.nextInt();
+                    c = sc2.nextInt();
 
                     controleRemoto.sintonizar(c);
 
@@ -170,20 +172,5 @@ public class Principal {
         } while (op != 0);
     }
 
-    public static void canaisInicio() {
-
-        canais = new ArrayList<>();
-
-        canais.add(new Canal(8, "RECORD", false));
-        canais.add(new Canal(80, "RECORDHD", true));
-        canais.add(new Canal(10, "GLOBO", false));
-        canais.add(new Canal(100, "GLOBOHD", true));
-        canais.add(new Canal(12, "SBT", false));
-        canais.add(new Canal(120, "SBTHD", true));
-        canais.add(new Canal(14, "BAND", false));
-        canais.add(new Canal(140, "BANDHD", true));
-    }
-
-
-
+    
 }

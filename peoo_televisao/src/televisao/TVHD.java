@@ -3,7 +3,13 @@ package televisao;
 import java.util.ArrayList;
 import java.util.List;
 
+import static televisao.Principal.canais;
+
 public class TVHD extends Televisao {
+
+    /**
+     * Modelo da TVHD
+     */
 
     private model modelo;
 
@@ -12,6 +18,11 @@ public class TVHD extends Televisao {
         LED, PLASMA, HD;
 
     }
+
+    /**
+     * Metodo get/set do modelo
+     * @return
+     */
 
     public model getModelo(){
 
@@ -25,6 +36,13 @@ public class TVHD extends Televisao {
 
     }
 
+    /**
+     * Construtor padrão da classe TVHD
+     * @param id
+     * @param canaisDisponiveis
+     * @param modelo
+     */
+
     public TVHD(String id, ArrayList<Canal> canaisDisponiveis, model modelo){
 
         super(id, canaisDisponiveis);
@@ -32,8 +50,12 @@ public class TVHD extends Televisao {
 
     }
 
+    /**
+     * Certifica que irá sobrescrever
+     */
+
     @Override
-    public void cadastrarCanais (List<Canal> canais){
+    public void cadastrarCanais (){
 
         for(Canal canal : canais) if (canal.isHd()) this.canaisCadastrados.add(canal);
         this.canalAtual = this.canaisCadastrados.get(canaisCadastrados.size() - 1);
@@ -46,10 +68,6 @@ public class TVHD extends Televisao {
         return "TVHD " + modelo + "," + id + "," + canalAtual + "," + volume;
 
     }
-
-
-
-
 
 
 

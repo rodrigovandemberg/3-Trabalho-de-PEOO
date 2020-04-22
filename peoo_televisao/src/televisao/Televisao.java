@@ -59,7 +59,7 @@ public abstract class Televisao {
     }
 
     /**
-     * Método get/set do Canal
+     * Método get/set do CanalAtual
      * @return
      */
 
@@ -86,6 +86,12 @@ public abstract class Televisao {
 
     }
 
+    /**
+     * Construtor padrão da classe Televisão
+     * @param id
+     * @param canaisCadastrados
+     */
+
     public Televisao(String id, ArrayList<Canal> canaisCadastrados){
 
         this.volume = 5;
@@ -99,7 +105,7 @@ public abstract class Televisao {
      * Método de cadastrar canais
      */
 
-    public abstract void cadastrarCanais(List<Canal> canais);
+    public abstract void cadastrarCanais();
 
     /**
      * Mostra quais os canais que tem
@@ -248,13 +254,6 @@ public abstract class Televisao {
         }
 
 
-
     }
-
-
-
-
-
-
 
 }

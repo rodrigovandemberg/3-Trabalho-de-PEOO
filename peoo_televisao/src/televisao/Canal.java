@@ -8,6 +8,13 @@ public class Canal {
     public boolean hd;
 
 
+    /**
+     * Construtor padrao da classe Canal
+     * @param canal
+     * @param nome
+     * @param hd
+     */
+
     public Canal(int canal, String nome, boolean hd){
 
         this.canal = canal;
@@ -15,12 +22,6 @@ public class Canal {
         this.hd = hd;
 
     }
-
-
-    /**
-     * Atributos da classe canal
-     * @return
-     */
 
 
     /**
@@ -75,7 +76,7 @@ public class Canal {
 
 
     /**
-     * Construtor informacoes().
+     *
      * @return
      */
 

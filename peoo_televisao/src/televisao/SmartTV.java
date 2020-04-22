@@ -24,6 +24,13 @@ public class SmartTV extends Televisao{
 
     }
 
+    /**
+     * Construtor padrão da classe SmartTV
+     * @param id
+     * @param canaisDisponiveis
+     * @param pol
+     */
+
     public SmartTV(String id, ArrayList<Canal> canaisDisponiveis, int pol){
 
         super(id, canaisDisponiveis);
@@ -31,26 +38,19 @@ public class SmartTV extends Televisao{
 
     }
 
+    /**
+     * Insere todos os canais existentes na lista de canais cadastrados
+     */
+
     public void cadastrarCanais(){
 
         cadastrarCanais(this.canaisDisponiveis);
 
     }
 
-    @Override
-    public void cadastrarCanais(List<Canal>canais) {
-        for (Canal canal : canaisDisponiveis) {
-            this.canaisCadastrados.add(canal);
-        }
-        this.canalAtual = this.canaisCadastrados.get(0);
+    private void cadastrarCanais(ArrayList<Canal> canaisDisponiveis) {
+
     }
-
-
-
-
-
-
-
 
 
 }
